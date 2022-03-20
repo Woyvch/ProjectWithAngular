@@ -1,0 +1,43 @@
+<div class="row"> 
+  <div class="offset-10 col-md-2">
+    <a routerLink="/city">Create city</a>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+
+      <h1 id="tableCities">Cities</h1>
+
+      <p *ngIf="!cities">
+        <em>Loading...</em>
+      </p>
+
+      <table class="table table-striped" aria-labelledby="tableLabel" *ngIf="cities">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>City name</th>
+            <th>City description</th>
+            <th>Details</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let city of cities">
+            <td>{{ city.id }}</td>
+            <td>{{ city.name }}</td>
+            <td>{{ city.description }}</td>
+            <td>
+              <a routerLink="/details/{{city.id}}" type="button" id="update" class="btn btn-info">Details</a>
+            </td>
+            <td>
+              <button type="button" id="delete" class="btn btn-danger" (click)="deleteCity(city)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
